@@ -1,62 +1,72 @@
-Last login: Mon Nov 16 20:41:26 on ttys002
+Last login: Mon Nov 16 20:48:12 on ttys002
 loksum619@SamMac-mini ~ % cd ~/Desktop/Ghost2_Recovery/Il2CppDumper_Perfare
 
-echo "===== SEARCH METHOD DEFINITIONS ====="
+echo "===== SECTION HELPER SEARCH METHODS ====="
 
 grep -R -n -E \
-'bool (PlusSearch|Search|SymbolSearch)|PlusSearch\(|SymbolSearch\(' \
+'FindCodeRegistration|FindMetadataRegistration|class SectionHelper|AutoPlusInit' \
 Il2CppDumper --include='*.cs'
 
 echo
-echo "===== SEARCH IMPLEMENTATIONS ====="
+echo "===== SECTION HELPER IMPLEMENTATION ====="
 
-grep -R -n -A 180 -E \
-'bool (PlusSearch|Search|SymbolSearch)' \
+grep -R -n -A 220 -E \
+'FindCodeRegistration|FindMetadataRegistration' \
 Il2CppDumper --include='*.cs'
-===== SEARCH METHOD DEFINITIONS =====
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:25:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:33:        public override bool Search()
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:38:        public override bool SymbolSearch()
-Il2CppDumper/ExecutableFormats/Macho.cs:93:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Macho.cs:177:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Macho.cs:185:        public override bool SymbolSearch()
-Il2CppDumper/ExecutableFormats/Elf64.cs:87:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Elf64.cs:92:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Elf64.cs:100:        public override bool SymbolSearch()
-Il2CppDumper/ExecutableFormats/PE.cs:78:        public override bool Search()
-Il2CppDumper/ExecutableFormats/PE.cs:83:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/PE.cs:91:        public override bool SymbolSearch()
-Il2CppDumper/ExecutableFormats/Macho64.cs:93:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Macho64.cs:239:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Macho64.cs:247:        public override bool SymbolSearch()
-Il2CppDumper/ExecutableFormats/Elf.cs:96:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Elf.cs:152:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Elf.cs:160:        public override bool SymbolSearch()
-Il2CppDumper/ExecutableFormats/NSO.cs:219:        public override bool Search()
-Il2CppDumper/ExecutableFormats/NSO.cs:224:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/NSO.cs:232:        public override bool SymbolSearch()
-Il2CppDumper/Il2Cpp/Il2Cpp.cs:37:        public abstract bool Search();
-Il2CppDumper/Il2Cpp/Il2Cpp.cs:38:        public abstract bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs:39:        public abstract bool SymbolSearch();
-Il2CppDumper/Program.cs:210:                var flag = il2Cpp.PlusSearch(metadata.methodDefs.Count(x => x.methodIndex >= 0), metadata.typeDefs.Length, metadata.imageDefs.Length);
-Il2CppDumper/Program.cs:218:                        flag = il2Cpp.PlusSearch(metadata.methodDefs.Count(x => x.methodIndex >= 0), metadata.typeDefs.Length, metadata.imageDefs.Length);
-Il2CppDumper/Program.cs:227:                    flag = il2Cpp.SymbolSearch();
+===== SECTION HELPER SEARCH METHODS =====
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:28:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:29:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:30:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/ExecutableFormats/Macho.cs:180:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Macho.cs:181:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Macho.cs:182:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/ExecutableFormats/Elf64.cs:95:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Elf64.cs:96:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Elf64.cs:97:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/ExecutableFormats/PE.cs:86:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/PE.cs:87:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/PE.cs:88:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/ExecutableFormats/Macho64.cs:242:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Macho64.cs:243:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Macho64.cs:244:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/ExecutableFormats/Elf.cs:155:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Elf.cs:156:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Elf.cs:157:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/ExecutableFormats/NSO.cs:227:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/NSO.cs:228:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/NSO.cs:229:            return AutoPlusInit(codeRegistration, metadataRegistration);
+Il2CppDumper/Utils/SectionHelper.cs:7:    public class SectionHelper
+Il2CppDumper/Utils/SectionHelper.cs:167:        public ulong FindCodeRegistration()
+Il2CppDumper/Utils/SectionHelper.cs:174:                    codeRegistration = FindCodeRegistrationExec();
+Il2CppDumper/Utils/SectionHelper.cs:177:                        codeRegistration = FindCodeRegistrationData();
+Il2CppDumper/Utils/SectionHelper.cs:186:                    codeRegistration = FindCodeRegistrationData();
+Il2CppDumper/Utils/SectionHelper.cs:189:                        codeRegistration = FindCodeRegistrationExec();
+Il2CppDumper/Utils/SectionHelper.cs:195:            return FindCodeRegistrationOld();
+Il2CppDumper/Utils/SectionHelper.cs:198:        public ulong FindMetadataRegistration()
+Il2CppDumper/Utils/SectionHelper.cs:206:                return FindMetadataRegistrationV21();
+Il2CppDumper/Utils/SectionHelper.cs:208:            return FindMetadataRegistrationOld();
+Il2CppDumper/Utils/SectionHelper.cs:211:        private ulong FindCodeRegistrationOld()
+Il2CppDumper/Utils/SectionHelper.cs:245:        private ulong FindMetadataRegistrationOld()
+Il2CppDumper/Utils/SectionHelper.cs:281:        private ulong FindMetadataRegistrationV21()
+Il2CppDumper/Utils/SectionHelper.cs:351:        private ulong FindCodeRegistrationData()
+Il2CppDumper/Utils/SectionHelper.cs:353:            return FindCodeRegistration2019(data);
+Il2CppDumper/Utils/SectionHelper.cs:356:        private ulong FindCodeRegistrationExec()
+Il2CppDumper/Utils/SectionHelper.cs:358:            return FindCodeRegistration2019(exec);
+Il2CppDumper/Utils/SectionHelper.cs:361:        private ulong FindCodeRegistration2019(List<SearchSection> secs)
+Il2CppDumper/Il2Cpp/Il2Cpp.cs:51:        protected bool AutoPlusInit(ulong codeRegistration, ulong metadataRegistration)
 
-===== SEARCH IMPLEMENTATIONS =====
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:25:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-26-        {
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-27-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-28-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-29-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+===== SECTION HELPER IMPLEMENTATION =====
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:28:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:29:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-30-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-31-        }
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-32-
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:33:        public override bool Search()
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-33-        public override bool Search()
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-34-        {
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-35-            return false;
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-36-        }
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-37-
-Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs:38:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-38-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-39-        {
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-40-            return false;
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-41-        }
@@ -95,99 +105,12 @@ Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-73-        public override b
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-74-    }
 Il2CppDumper/ExecutableFormats/WebAssemblyMemory.cs-75-}
 --
-Il2CppDumper/ExecutableFormats/Macho.cs:93:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Macho.cs-94-        {
-Il2CppDumper/ExecutableFormats/Macho.cs-95-            if (Version < 21)
-Il2CppDumper/ExecutableFormats/Macho.cs-96-            {
-Il2CppDumper/ExecutableFormats/Macho.cs-97-                var __mod_init_func = sections.First(x => x.sectname == "__mod_init_func");
-Il2CppDumper/ExecutableFormats/Macho.cs-98-                var addrs = ReadClassArray<uint>(__mod_init_func.offset, __mod_init_func.size / 4u);
-Il2CppDumper/ExecutableFormats/Macho.cs-99-                foreach (var a in addrs)
-Il2CppDumper/ExecutableFormats/Macho.cs-100-                {
-Il2CppDumper/ExecutableFormats/Macho.cs-101-                    if (a > 0)
-Il2CppDumper/ExecutableFormats/Macho.cs-102-                    {
-Il2CppDumper/ExecutableFormats/Macho.cs-103-                        var i = a - 1;
-Il2CppDumper/ExecutableFormats/Macho.cs-104-                        Position = MapVATR(i);
-Il2CppDumper/ExecutableFormats/Macho.cs-105-                        Position += 4;
-Il2CppDumper/ExecutableFormats/Macho.cs-106-                        var buff = ReadBytes(2);
-Il2CppDumper/ExecutableFormats/Macho.cs-107-                        if (FeatureBytes1.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho.cs-108-                        {
-Il2CppDumper/ExecutableFormats/Macho.cs-109-                            Position += 12;
-Il2CppDumper/ExecutableFormats/Macho.cs-110-                            buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho.cs-111-                            if (FeatureBytes2.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho.cs-112-                            {
-Il2CppDumper/ExecutableFormats/Macho.cs-113-                                Position = MapVATR(i) + 10;
-Il2CppDumper/ExecutableFormats/Macho.cs-114-                                var subaddr = DecodeMov(ReadBytes(8)) + i + 24u - 1u;
-Il2CppDumper/ExecutableFormats/Macho.cs-115-                                var rsubaddr = MapVATR(subaddr);
-Il2CppDumper/ExecutableFormats/Macho.cs-116-                                Position = rsubaddr;
-Il2CppDumper/ExecutableFormats/Macho.cs-117-                                var ptr = DecodeMov(ReadBytes(8)) + subaddr + 16u;
-Il2CppDumper/ExecutableFormats/Macho.cs-118-                                Position = MapVATR(ptr);
-Il2CppDumper/ExecutableFormats/Macho.cs-119-                                var metadataRegistration = ReadUInt32();
-Il2CppDumper/ExecutableFormats/Macho.cs-120-                                Position = rsubaddr + 8;
-Il2CppDumper/ExecutableFormats/Macho.cs-121-                                buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho.cs-122-                                Position = rsubaddr + 14;
-Il2CppDumper/ExecutableFormats/Macho.cs-123-                                buff = buff.Concat(ReadBytes(4)).ToArray();
-Il2CppDumper/ExecutableFormats/Macho.cs-124-                                var codeRegistration = DecodeMov(buff) + subaddr + 22u;
-Il2CppDumper/ExecutableFormats/Macho.cs-125-                                Console.WriteLine("CodeRegistration : {0:x}", codeRegistration);
-Il2CppDumper/ExecutableFormats/Macho.cs-126-                                Console.WriteLine("MetadataRegistration : {0:x}", metadataRegistration);
-Il2CppDumper/ExecutableFormats/Macho.cs-127-                                Init(codeRegistration, metadataRegistration);
-Il2CppDumper/ExecutableFormats/Macho.cs-128-                                return true;
-Il2CppDumper/ExecutableFormats/Macho.cs-129-                            }
-Il2CppDumper/ExecutableFormats/Macho.cs-130-                        }
-Il2CppDumper/ExecutableFormats/Macho.cs-131-                    }
-Il2CppDumper/ExecutableFormats/Macho.cs-132-                }
-Il2CppDumper/ExecutableFormats/Macho.cs-133-                return false;
-Il2CppDumper/ExecutableFormats/Macho.cs-134-            }
-Il2CppDumper/ExecutableFormats/Macho.cs-135-            else
-Il2CppDumper/ExecutableFormats/Macho.cs-136-            {
-Il2CppDumper/ExecutableFormats/Macho.cs-137-                var __mod_init_func = sections.First(x => x.sectname == "__mod_init_func");
-Il2CppDumper/ExecutableFormats/Macho.cs-138-                var addrs = ReadClassArray<uint>(__mod_init_func.offset, __mod_init_func.size / 4u);
-Il2CppDumper/ExecutableFormats/Macho.cs-139-                foreach (var a in addrs)
-Il2CppDumper/ExecutableFormats/Macho.cs-140-                {
-Il2CppDumper/ExecutableFormats/Macho.cs-141-                    if (a > 0)
-Il2CppDumper/ExecutableFormats/Macho.cs-142-                    {
-Il2CppDumper/ExecutableFormats/Macho.cs-143-                        var i = a - 1;
-Il2CppDumper/ExecutableFormats/Macho.cs-144-                        Position = MapVATR(i);
-Il2CppDumper/ExecutableFormats/Macho.cs-145-                        Position += 4;
-Il2CppDumper/ExecutableFormats/Macho.cs-146-                        var buff = ReadBytes(2);
-Il2CppDumper/ExecutableFormats/Macho.cs-147-                        if (FeatureBytes1.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho.cs-148-                        {
-Il2CppDumper/ExecutableFormats/Macho.cs-149-                            Position += 12;
-Il2CppDumper/ExecutableFormats/Macho.cs-150-                            buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho.cs-151-                            if (FeatureBytes2.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho.cs-152-                            {
-Il2CppDumper/ExecutableFormats/Macho.cs-153-                                Position = MapVATR(i) + 10;
-Il2CppDumper/ExecutableFormats/Macho.cs-154-                                var subaddr = DecodeMov(ReadBytes(8)) + i + 24u - 1u;
-Il2CppDumper/ExecutableFormats/Macho.cs-155-                                var rsubaddr = MapVATR(subaddr);
-Il2CppDumper/ExecutableFormats/Macho.cs-156-                                Position = rsubaddr;
-Il2CppDumper/ExecutableFormats/Macho.cs-157-                                var ptr = DecodeMov(ReadBytes(8)) + subaddr + 16u;
-Il2CppDumper/ExecutableFormats/Macho.cs-158-                                Position = MapVATR(ptr);
-Il2CppDumper/ExecutableFormats/Macho.cs-159-                                var metadataRegistration = ReadUInt32();
-Il2CppDumper/ExecutableFormats/Macho.cs-160-                                Position = rsubaddr + 8;
-Il2CppDumper/ExecutableFormats/Macho.cs-161-                                buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho.cs-162-                                Position = rsubaddr + 14;
-Il2CppDumper/ExecutableFormats/Macho.cs-163-                                buff = buff.Concat(ReadBytes(4)).ToArray();
-Il2CppDumper/ExecutableFormats/Macho.cs-164-                                var codeRegistration = DecodeMov(buff) + subaddr + 26u;
-Il2CppDumper/ExecutableFormats/Macho.cs-165-                                Console.WriteLine("CodeRegistration : {0:x}", codeRegistration);
-Il2CppDumper/ExecutableFormats/Macho.cs-166-                                Console.WriteLine("MetadataRegistration : {0:x}", metadataRegistration);
-Il2CppDumper/ExecutableFormats/Macho.cs-167-                                Init(codeRegistration, metadataRegistration);
-Il2CppDumper/ExecutableFormats/Macho.cs-168-                                return true;
-Il2CppDumper/ExecutableFormats/Macho.cs-169-                            }
-Il2CppDumper/ExecutableFormats/Macho.cs-170-                        }
-Il2CppDumper/ExecutableFormats/Macho.cs-171-                    }
-Il2CppDumper/ExecutableFormats/Macho.cs-172-                }
-Il2CppDumper/ExecutableFormats/Macho.cs-173-                return false;
-Il2CppDumper/ExecutableFormats/Macho.cs-174-            }
-Il2CppDumper/ExecutableFormats/Macho.cs-175-        }
-Il2CppDumper/ExecutableFormats/Macho.cs-176-
-Il2CppDumper/ExecutableFormats/Macho.cs:177:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Macho.cs-178-        {
-Il2CppDumper/ExecutableFormats/Macho.cs-179-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/Macho.cs-180-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/Macho.cs-181-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Macho.cs:180:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Macho.cs:181:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/Macho.cs-182-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/Macho.cs-183-        }
 Il2CppDumper/ExecutableFormats/Macho.cs-184-
-Il2CppDumper/ExecutableFormats/Macho.cs:185:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/Macho.cs-185-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/Macho.cs-186-        {
 Il2CppDumper/ExecutableFormats/Macho.cs-187-            return false;
 Il2CppDumper/ExecutableFormats/Macho.cs-188-        }
@@ -213,20 +136,12 @@ Il2CppDumper/ExecutableFormats/Macho.cs-207-        public override bool CheckDu
 Il2CppDumper/ExecutableFormats/Macho.cs-208-    }
 Il2CppDumper/ExecutableFormats/Macho.cs-209-}
 --
-Il2CppDumper/ExecutableFormats/Elf64.cs:87:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Elf64.cs-88-        {
-Il2CppDumper/ExecutableFormats/Elf64.cs-89-            return false;
-Il2CppDumper/ExecutableFormats/Elf64.cs-90-        }
-Il2CppDumper/ExecutableFormats/Elf64.cs-91-
-Il2CppDumper/ExecutableFormats/Elf64.cs:92:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Elf64.cs-93-        {
-Il2CppDumper/ExecutableFormats/Elf64.cs-94-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/Elf64.cs-95-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/Elf64.cs-96-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Elf64.cs:95:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Elf64.cs:96:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/Elf64.cs-97-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/Elf64.cs-98-        }
 Il2CppDumper/ExecutableFormats/Elf64.cs-99-
-Il2CppDumper/ExecutableFormats/Elf64.cs:100:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/Elf64.cs-100-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/Elf64.cs-101-        {
 Il2CppDumper/ExecutableFormats/Elf64.cs-102-            ulong codeRegistration = 0ul;
 Il2CppDumper/ExecutableFormats/Elf64.cs-103-            ulong metadataRegistration = 0ul;
@@ -407,21 +322,49 @@ Il2CppDumper/ExecutableFormats/Elf64.cs-277-
 Il2CppDumper/ExecutableFormats/Elf64.cs-278-        private void FixedDynamicSection()
 Il2CppDumper/ExecutableFormats/Elf64.cs-279-        {
 Il2CppDumper/ExecutableFormats/Elf64.cs-280-            for (uint i = 0; i < dynamicSection.Length; i++)
+Il2CppDumper/ExecutableFormats/Elf64.cs-281-            {
+Il2CppDumper/ExecutableFormats/Elf64.cs-282-                Position = pt_dynamic.p_offset + i * 16 + 8;
+Il2CppDumper/ExecutableFormats/Elf64.cs-283-                var dyn = dynamicSection[i];
+Il2CppDumper/ExecutableFormats/Elf64.cs-284-                switch (dyn.d_tag)
+Il2CppDumper/ExecutableFormats/Elf64.cs-285-                {
+Il2CppDumper/ExecutableFormats/Elf64.cs-286-                    case DT_PLTGOT:
+Il2CppDumper/ExecutableFormats/Elf64.cs-287-                    case DT_HASH:
+Il2CppDumper/ExecutableFormats/Elf64.cs-288-                    case DT_STRTAB:
+Il2CppDumper/ExecutableFormats/Elf64.cs-289-                    case DT_SYMTAB:
+Il2CppDumper/ExecutableFormats/Elf64.cs-290-                    case DT_RELA:
+Il2CppDumper/ExecutableFormats/Elf64.cs-291-                    case DT_INIT:
+Il2CppDumper/ExecutableFormats/Elf64.cs-292-                    case DT_FINI:
+Il2CppDumper/ExecutableFormats/Elf64.cs-293-                    case DT_REL:
+Il2CppDumper/ExecutableFormats/Elf64.cs-294-                    case DT_JMPREL:
+Il2CppDumper/ExecutableFormats/Elf64.cs-295-                    case DT_INIT_ARRAY:
+Il2CppDumper/ExecutableFormats/Elf64.cs-296-                    case DT_FINI_ARRAY:
+Il2CppDumper/ExecutableFormats/Elf64.cs-297-                        dyn.d_un += ImageBase;
+Il2CppDumper/ExecutableFormats/Elf64.cs-298-                        Write(dyn.d_un);
+Il2CppDumper/ExecutableFormats/Elf64.cs-299-                        break;
+Il2CppDumper/ExecutableFormats/Elf64.cs-300-                }
+Il2CppDumper/ExecutableFormats/Elf64.cs-301-            }
+Il2CppDumper/ExecutableFormats/Elf64.cs-302-        }
+Il2CppDumper/ExecutableFormats/Elf64.cs-303-
+Il2CppDumper/ExecutableFormats/Elf64.cs-304-        public override SectionHelper GetSectionHelper(int methodCount, int typeDefinitionsCount, int imageCount)
+Il2CppDumper/ExecutableFormats/Elf64.cs-305-        {
+Il2CppDumper/ExecutableFormats/Elf64.cs-306-            var dataList = new List<Elf64_Phdr>();
+Il2CppDumper/ExecutableFormats/Elf64.cs-307-            var execList = new List<Elf64_Phdr>();
+Il2CppDumper/ExecutableFormats/Elf64.cs-308-            foreach (var phdr in programSegment)
+Il2CppDumper/ExecutableFormats/Elf64.cs-309-            {
+Il2CppDumper/ExecutableFormats/Elf64.cs-310-                if (phdr.p_memsz != 0ul)
+Il2CppDumper/ExecutableFormats/Elf64.cs-311-                {
+Il2CppDumper/ExecutableFormats/Elf64.cs-312-                    switch (phdr.p_flags)
+Il2CppDumper/ExecutableFormats/Elf64.cs-313-                    {
+Il2CppDumper/ExecutableFormats/Elf64.cs-314-                        case 1u: //PF_X
+Il2CppDumper/ExecutableFormats/Elf64.cs-315-                        case 3u:
+Il2CppDumper/ExecutableFormats/Elf64.cs-316-                        case 5u:
 --
-Il2CppDumper/ExecutableFormats/PE.cs:78:        public override bool Search()
-Il2CppDumper/ExecutableFormats/PE.cs-79-        {
-Il2CppDumper/ExecutableFormats/PE.cs-80-            return false;
-Il2CppDumper/ExecutableFormats/PE.cs-81-        }
-Il2CppDumper/ExecutableFormats/PE.cs-82-
-Il2CppDumper/ExecutableFormats/PE.cs:83:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/PE.cs-84-        {
-Il2CppDumper/ExecutableFormats/PE.cs-85-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/PE.cs-86-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/PE.cs-87-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/PE.cs:86:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/PE.cs:87:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/PE.cs-88-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/PE.cs-89-        }
 Il2CppDumper/ExecutableFormats/PE.cs-90-
-Il2CppDumper/ExecutableFormats/PE.cs:91:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/PE.cs-91-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/PE.cs-92-        {
 Il2CppDumper/ExecutableFormats/PE.cs-93-            return false;
 Il2CppDumper/ExecutableFormats/PE.cs-94-        }
@@ -471,161 +414,12 @@ Il2CppDumper/ExecutableFormats/PE.cs-137-        }
 Il2CppDumper/ExecutableFormats/PE.cs-138-    }
 Il2CppDumper/ExecutableFormats/PE.cs-139-}
 --
-Il2CppDumper/ExecutableFormats/Macho64.cs:93:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Macho64.cs-94-        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-95-            var codeRegistration = 0ul;
-Il2CppDumper/ExecutableFormats/Macho64.cs-96-            var metadataRegistration = 0ul;
-Il2CppDumper/ExecutableFormats/Macho64.cs-97-            if (Version < 23)
-Il2CppDumper/ExecutableFormats/Macho64.cs-98-            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-99-                var __mod_init_func = sections.First(x => x.sectname == "__mod_init_func");
-Il2CppDumper/ExecutableFormats/Macho64.cs-100-                var addrs = ReadClassArray<ulong>(__mod_init_func.offset, __mod_init_func.size / 8);
-Il2CppDumper/ExecutableFormats/Macho64.cs-101-                foreach (var i in addrs)
-Il2CppDumper/ExecutableFormats/Macho64.cs-102-                {
-Il2CppDumper/ExecutableFormats/Macho64.cs-103-                    if (i > 0)
-Il2CppDumper/ExecutableFormats/Macho64.cs-104-                    {
-Il2CppDumper/ExecutableFormats/Macho64.cs-105-                        var flag = false;
-Il2CppDumper/ExecutableFormats/Macho64.cs-106-                        var subaddr = 0ul;
-Il2CppDumper/ExecutableFormats/Macho64.cs-107-                        Position = MapVATR(i);
-Il2CppDumper/ExecutableFormats/Macho64.cs-108-                        var buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-109-                        if (FeatureBytes1.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-110-                        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-111-                            buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-112-                            if (FeatureBytes2.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-113-                            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-114-                                Position += 8;
-Il2CppDumper/ExecutableFormats/Macho64.cs-115-                                var inst = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-116-                                if (IsAdr(inst))
-Il2CppDumper/ExecutableFormats/Macho64.cs-117-                                {
-Il2CppDumper/ExecutableFormats/Macho64.cs-118-                                    subaddr = DecodeAdr(i + 16, inst);
-Il2CppDumper/ExecutableFormats/Macho64.cs-119-                                    flag = true;
-Il2CppDumper/ExecutableFormats/Macho64.cs-120-                                }
-Il2CppDumper/ExecutableFormats/Macho64.cs-121-                            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-122-                        }
-Il2CppDumper/ExecutableFormats/Macho64.cs-123-                        else
-Il2CppDumper/ExecutableFormats/Macho64.cs-124-                        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-125-                            Position += 0xc;
-Il2CppDumper/ExecutableFormats/Macho64.cs-126-                            buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-127-                            if (FeatureBytes2.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-128-                            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-129-                                buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-130-                                if (FeatureBytes1.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-131-                                {
-Il2CppDumper/ExecutableFormats/Macho64.cs-132-                                    Position -= 0x10;
-Il2CppDumper/ExecutableFormats/Macho64.cs-133-                                    var inst = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-134-                                    if (IsAdr(inst))
-Il2CppDumper/ExecutableFormats/Macho64.cs-135-                                    {
-Il2CppDumper/ExecutableFormats/Macho64.cs-136-                                        subaddr = DecodeAdr(i + 8, inst);
-Il2CppDumper/ExecutableFormats/Macho64.cs-137-                                        flag = true;
-Il2CppDumper/ExecutableFormats/Macho64.cs-138-                                    }
-Il2CppDumper/ExecutableFormats/Macho64.cs-139-                                }
-Il2CppDumper/ExecutableFormats/Macho64.cs-140-                            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-141-                        }
-Il2CppDumper/ExecutableFormats/Macho64.cs-142-                        if (flag)
-Il2CppDumper/ExecutableFormats/Macho64.cs-143-                        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-144-                            var rsubaddr = MapVATR(subaddr);
-Il2CppDumper/ExecutableFormats/Macho64.cs-145-                            Position = rsubaddr;
-Il2CppDumper/ExecutableFormats/Macho64.cs-146-                            codeRegistration = DecodeAdrp(subaddr, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-147-                            codeRegistration += DecodeAdd(ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-148-                            Position = rsubaddr + 8;
-Il2CppDumper/ExecutableFormats/Macho64.cs-149-                            metadataRegistration = DecodeAdrp(subaddr + 8, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-150-                            metadataRegistration += DecodeAdd(ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-151-                        }
-Il2CppDumper/ExecutableFormats/Macho64.cs-152-                    }
-Il2CppDumper/ExecutableFormats/Macho64.cs-153-                }
-Il2CppDumper/ExecutableFormats/Macho64.cs-154-            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-155-            if (Version == 23)
-Il2CppDumper/ExecutableFormats/Macho64.cs-156-            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-157-                /* ADRP X0, unk
-Il2CppDumper/ExecutableFormats/Macho64.cs-158-                 * ADD X0, X0, unk
-Il2CppDumper/ExecutableFormats/Macho64.cs-159-                 * ADR X1, sub
-Il2CppDumper/ExecutableFormats/Macho64.cs-160-                 * NOP
-Il2CppDumper/ExecutableFormats/Macho64.cs-161-                 * MOV X2, #0
-Il2CppDumper/ExecutableFormats/Macho64.cs-162-                 * MOV W3, #0
-Il2CppDumper/ExecutableFormats/Macho64.cs-163-                 * B sub
-Il2CppDumper/ExecutableFormats/Macho64.cs-164-                 */
-Il2CppDumper/ExecutableFormats/Macho64.cs-165-                var __mod_init_func = sections.First(x => x.sectname == "__mod_init_func");
-Il2CppDumper/ExecutableFormats/Macho64.cs-166-                var addrs = ReadClassArray<ulong>(__mod_init_func.offset, __mod_init_func.size / 8);
-Il2CppDumper/ExecutableFormats/Macho64.cs-167-                foreach (var i in addrs)
-Il2CppDumper/ExecutableFormats/Macho64.cs-168-                {
-Il2CppDumper/ExecutableFormats/Macho64.cs-169-                    if (i > 0)
-Il2CppDumper/ExecutableFormats/Macho64.cs-170-                    {
-Il2CppDumper/ExecutableFormats/Macho64.cs-171-                        Position = MapVATR(i) + 16;
-Il2CppDumper/ExecutableFormats/Macho64.cs-172-                        var buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-173-                        if (FeatureBytes1.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-174-                        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-175-                            buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-176-                            if (FeatureBytes2.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-177-                            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-178-                                Position -= 16;
-Il2CppDumper/ExecutableFormats/Macho64.cs-179-                                var subaddr = DecodeAdr(i + 8, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-180-                                var rsubaddr = MapVATR(subaddr);
-Il2CppDumper/ExecutableFormats/Macho64.cs-181-                                Position = rsubaddr;
-Il2CppDumper/ExecutableFormats/Macho64.cs-182-                                codeRegistration = DecodeAdrp(subaddr, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-183-                                codeRegistration += DecodeAdd(ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-184-                                Position = rsubaddr + 8;
-Il2CppDumper/ExecutableFormats/Macho64.cs-185-                                metadataRegistration = DecodeAdrp(subaddr + 8, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-186-                                metadataRegistration += DecodeAdd(ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-187-                            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-188-                        }
-Il2CppDumper/ExecutableFormats/Macho64.cs-189-                    }
-Il2CppDumper/ExecutableFormats/Macho64.cs-190-                }
-Il2CppDumper/ExecutableFormats/Macho64.cs-191-            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-192-            if (Version >= 24)
-Il2CppDumper/ExecutableFormats/Macho64.cs-193-            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-194-                /* ADRP X0, unk
-Il2CppDumper/ExecutableFormats/Macho64.cs-195-                 * ADD X0, X0, unk
-Il2CppDumper/ExecutableFormats/Macho64.cs-196-                 * ADR X1, sub
-Il2CppDumper/ExecutableFormats/Macho64.cs-197-                 * NOP
-Il2CppDumper/ExecutableFormats/Macho64.cs-198-                 * MOV W3, #0
-Il2CppDumper/ExecutableFormats/Macho64.cs-199-                 * MOV X2, #0
-Il2CppDumper/ExecutableFormats/Macho64.cs-200-                 * B sub
-Il2CppDumper/ExecutableFormats/Macho64.cs-201-                 */
-Il2CppDumper/ExecutableFormats/Macho64.cs-202-                var __mod_init_func = sections.First(x => x.sectname == "__mod_init_func");
-Il2CppDumper/ExecutableFormats/Macho64.cs-203-                var addrs = ReadClassArray<ulong>(__mod_init_func.offset, __mod_init_func.size / 8);
-Il2CppDumper/ExecutableFormats/Macho64.cs-204-                foreach (var i in addrs)
-Il2CppDumper/ExecutableFormats/Macho64.cs-205-                {
-Il2CppDumper/ExecutableFormats/Macho64.cs-206-                    if (i > 0)
-Il2CppDumper/ExecutableFormats/Macho64.cs-207-                    {
-Il2CppDumper/ExecutableFormats/Macho64.cs-208-                        Position = MapVATR(i) + 16;
-Il2CppDumper/ExecutableFormats/Macho64.cs-209-                        var buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-210-                        if (FeatureBytes2.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-211-                        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-212-                            buff = ReadBytes(4);
-Il2CppDumper/ExecutableFormats/Macho64.cs-213-                            if (FeatureBytes1.SequenceEqual(buff))
-Il2CppDumper/ExecutableFormats/Macho64.cs-214-                            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-215-                                Position -= 16;
-Il2CppDumper/ExecutableFormats/Macho64.cs-216-                                var subaddr = DecodeAdr(i + 8, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-217-                                var rsubaddr = MapVATR(subaddr);
-Il2CppDumper/ExecutableFormats/Macho64.cs-218-                                Position = rsubaddr;
-Il2CppDumper/ExecutableFormats/Macho64.cs-219-                                codeRegistration = DecodeAdrp(subaddr, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-220-                                codeRegistration += DecodeAdd(ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-221-                                Position = rsubaddr + 8;
-Il2CppDumper/ExecutableFormats/Macho64.cs-222-                                metadataRegistration = DecodeAdrp(subaddr + 8, ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-223-                                metadataRegistration += DecodeAdd(ReadBytes(4));
-Il2CppDumper/ExecutableFormats/Macho64.cs-224-                            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-225-                        }
-Il2CppDumper/ExecutableFormats/Macho64.cs-226-                    }
-Il2CppDumper/ExecutableFormats/Macho64.cs-227-                }
-Il2CppDumper/ExecutableFormats/Macho64.cs-228-            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-229-            if (codeRegistration != 0 && metadataRegistration != 0)
-Il2CppDumper/ExecutableFormats/Macho64.cs-230-            {
-Il2CppDumper/ExecutableFormats/Macho64.cs-231-                Console.WriteLine("CodeRegistration : {0:x}", codeRegistration);
-Il2CppDumper/ExecutableFormats/Macho64.cs-232-                Console.WriteLine("MetadataRegistration : {0:x}", metadataRegistration);
-Il2CppDumper/ExecutableFormats/Macho64.cs-233-                Init(codeRegistration, metadataRegistration);
-Il2CppDumper/ExecutableFormats/Macho64.cs-234-                return true;
-Il2CppDumper/ExecutableFormats/Macho64.cs-235-            }
-Il2CppDumper/ExecutableFormats/Macho64.cs-236-            return false;
-Il2CppDumper/ExecutableFormats/Macho64.cs-237-        }
-Il2CppDumper/ExecutableFormats/Macho64.cs-238-
-Il2CppDumper/ExecutableFormats/Macho64.cs:239:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Macho64.cs-240-        {
-Il2CppDumper/ExecutableFormats/Macho64.cs-241-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/Macho64.cs-242-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/Macho64.cs-243-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Macho64.cs:242:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Macho64.cs:243:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/Macho64.cs-244-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/Macho64.cs-245-        }
 Il2CppDumper/ExecutableFormats/Macho64.cs-246-
-Il2CppDumper/ExecutableFormats/Macho64.cs:247:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/Macho64.cs-247-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/Macho64.cs-248-        {
 Il2CppDumper/ExecutableFormats/Macho64.cs-249-            return false;
 Il2CppDumper/ExecutableFormats/Macho64.cs-250-        }
@@ -668,71 +462,12 @@ Il2CppDumper/ExecutableFormats/Macho64.cs-286-        }
 Il2CppDumper/ExecutableFormats/Macho64.cs-287-    }
 Il2CppDumper/ExecutableFormats/Macho64.cs-288-}
 --
-Il2CppDumper/ExecutableFormats/Elf.cs:96:        public override bool Search()
-Il2CppDumper/ExecutableFormats/Elf.cs-97-        {
-Il2CppDumper/ExecutableFormats/Elf.cs-98-            var _GLOBAL_OFFSET_TABLE_ = dynamicSection.First(x => x.d_tag == DT_PLTGOT).d_un;
-Il2CppDumper/ExecutableFormats/Elf.cs-99-            var execs = programSegment.Where(x => x.p_type == PT_LOAD && (x.p_flags & PF_X) == 1).ToArray();
-Il2CppDumper/ExecutableFormats/Elf.cs-100-            var resultList = new List<int>();
-Il2CppDumper/ExecutableFormats/Elf.cs-101-            var featureBytes = elfHeader.e_machine == EM_ARM ? ARMFeatureBytes : X86FeatureBytes;
-Il2CppDumper/ExecutableFormats/Elf.cs-102-            foreach (var exec in execs)
-Il2CppDumper/ExecutableFormats/Elf.cs-103-            {
-Il2CppDumper/ExecutableFormats/Elf.cs-104-                Position = exec.p_offset;
-Il2CppDumper/ExecutableFormats/Elf.cs-105-                var buff = ReadBytes((int)exec.p_filesz);
-Il2CppDumper/ExecutableFormats/Elf.cs-106-                foreach (var temp in buff.Search(featureBytes))
-Il2CppDumper/ExecutableFormats/Elf.cs-107-                {
-Il2CppDumper/ExecutableFormats/Elf.cs-108-                    var bin = buff[temp + 2].HexToBin();
-Il2CppDumper/ExecutableFormats/Elf.cs-109-                    if (bin[3] == '1') //LDR
-Il2CppDumper/ExecutableFormats/Elf.cs-110-                    {
-Il2CppDumper/ExecutableFormats/Elf.cs-111-                        resultList.Add(temp);
-Il2CppDumper/ExecutableFormats/Elf.cs-112-                    }
-Il2CppDumper/ExecutableFormats/Elf.cs-113-                }
-Il2CppDumper/ExecutableFormats/Elf.cs-114-            }
-Il2CppDumper/ExecutableFormats/Elf.cs-115-            if (resultList.Count == 1)
-Il2CppDumper/ExecutableFormats/Elf.cs-116-            {
-Il2CppDumper/ExecutableFormats/Elf.cs-117-                uint codeRegistration = 0;
-Il2CppDumper/ExecutableFormats/Elf.cs-118-                uint metadataRegistration = 0;
-Il2CppDumper/ExecutableFormats/Elf.cs-119-                var result = (uint)resultList[0];
-Il2CppDumper/ExecutableFormats/Elf.cs-120-                if (Version < 24)
-Il2CppDumper/ExecutableFormats/Elf.cs-121-                {
-Il2CppDumper/ExecutableFormats/Elf.cs-122-                    if (elfHeader.e_machine == EM_ARM)
-Il2CppDumper/ExecutableFormats/Elf.cs-123-                    {
-Il2CppDumper/ExecutableFormats/Elf.cs-124-                        Position = result + 0x14;
-Il2CppDumper/ExecutableFormats/Elf.cs-125-                        codeRegistration = ReadUInt32() + _GLOBAL_OFFSET_TABLE_;
-Il2CppDumper/ExecutableFormats/Elf.cs-126-                        Position = result + 0x18;
-Il2CppDumper/ExecutableFormats/Elf.cs-127-                        var ptr = ReadUInt32() + _GLOBAL_OFFSET_TABLE_;
-Il2CppDumper/ExecutableFormats/Elf.cs-128-                        Position = MapVATR(ptr);
-Il2CppDumper/ExecutableFormats/Elf.cs-129-                        metadataRegistration = ReadUInt32();
-Il2CppDumper/ExecutableFormats/Elf.cs-130-                    }
-Il2CppDumper/ExecutableFormats/Elf.cs-131-                }
-Il2CppDumper/ExecutableFormats/Elf.cs-132-                else if (Version >= 24)
-Il2CppDumper/ExecutableFormats/Elf.cs-133-                {
-Il2CppDumper/ExecutableFormats/Elf.cs-134-                    if (elfHeader.e_machine == EM_ARM)
-Il2CppDumper/ExecutableFormats/Elf.cs-135-                    {
-Il2CppDumper/ExecutableFormats/Elf.cs-136-                        Position = result + 0x14;
-Il2CppDumper/ExecutableFormats/Elf.cs-137-                        codeRegistration = ReadUInt32() + result + 0xcu + (uint)ImageBase;
-Il2CppDumper/ExecutableFormats/Elf.cs-138-                        Position = result + 0x10;
-Il2CppDumper/ExecutableFormats/Elf.cs-139-                        var ptr = ReadUInt32() + result + 0x8;
-Il2CppDumper/ExecutableFormats/Elf.cs-140-                        Position = MapVATR(ptr + ImageBase);
-Il2CppDumper/ExecutableFormats/Elf.cs-141-                        metadataRegistration = ReadUInt32();
-Il2CppDumper/ExecutableFormats/Elf.cs-142-                    }
-Il2CppDumper/ExecutableFormats/Elf.cs-143-                }
-Il2CppDumper/ExecutableFormats/Elf.cs-144-                Console.WriteLine("CodeRegistration : {0:x}", codeRegistration);
-Il2CppDumper/ExecutableFormats/Elf.cs-145-                Console.WriteLine("MetadataRegistration : {0:x}", metadataRegistration);
-Il2CppDumper/ExecutableFormats/Elf.cs-146-                Init(codeRegistration, metadataRegistration);
-Il2CppDumper/ExecutableFormats/Elf.cs-147-                return true;
-Il2CppDumper/ExecutableFormats/Elf.cs-148-            }
-Il2CppDumper/ExecutableFormats/Elf.cs-149-            return false;
-Il2CppDumper/ExecutableFormats/Elf.cs-150-        }
-Il2CppDumper/ExecutableFormats/Elf.cs-151-
-Il2CppDumper/ExecutableFormats/Elf.cs:152:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/Elf.cs-153-        {
-Il2CppDumper/ExecutableFormats/Elf.cs-154-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/Elf.cs-155-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/Elf.cs-156-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/Elf.cs:155:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/Elf.cs:156:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/Elf.cs-157-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/Elf.cs-158-        }
 Il2CppDumper/ExecutableFormats/Elf.cs-159-
-Il2CppDumper/ExecutableFormats/Elf.cs:160:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/Elf.cs-160-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/Elf.cs-161-        {
 Il2CppDumper/ExecutableFormats/Elf.cs-162-            uint codeRegistration = 0;
 Il2CppDumper/ExecutableFormats/Elf.cs-163-            uint metadataRegistration = 0;
@@ -913,21 +648,49 @@ Il2CppDumper/ExecutableFormats/Elf.cs-337-            for (uint i = 0; i < dynam
 Il2CppDumper/ExecutableFormats/Elf.cs-338-            {
 Il2CppDumper/ExecutableFormats/Elf.cs-339-                Position = pt_dynamic.p_offset + i * 8 + 4;
 Il2CppDumper/ExecutableFormats/Elf.cs-340-                var dyn = dynamicSection[i];
+Il2CppDumper/ExecutableFormats/Elf.cs-341-                switch (dyn.d_tag)
+Il2CppDumper/ExecutableFormats/Elf.cs-342-                {
+Il2CppDumper/ExecutableFormats/Elf.cs-343-                    case DT_PLTGOT:
+Il2CppDumper/ExecutableFormats/Elf.cs-344-                    case DT_HASH:
+Il2CppDumper/ExecutableFormats/Elf.cs-345-                    case DT_STRTAB:
+Il2CppDumper/ExecutableFormats/Elf.cs-346-                    case DT_SYMTAB:
+Il2CppDumper/ExecutableFormats/Elf.cs-347-                    case DT_RELA:
+Il2CppDumper/ExecutableFormats/Elf.cs-348-                    case DT_INIT:
+Il2CppDumper/ExecutableFormats/Elf.cs-349-                    case DT_FINI:
+Il2CppDumper/ExecutableFormats/Elf.cs-350-                    case DT_REL:
+Il2CppDumper/ExecutableFormats/Elf.cs-351-                    case DT_JMPREL:
+Il2CppDumper/ExecutableFormats/Elf.cs-352-                    case DT_INIT_ARRAY:
+Il2CppDumper/ExecutableFormats/Elf.cs-353-                    case DT_FINI_ARRAY:
+Il2CppDumper/ExecutableFormats/Elf.cs-354-                        dyn.d_un += (uint)ImageBase;
+Il2CppDumper/ExecutableFormats/Elf.cs-355-                        Write(dyn.d_un);
+Il2CppDumper/ExecutableFormats/Elf.cs-356-                        break;
+Il2CppDumper/ExecutableFormats/Elf.cs-357-                }
+Il2CppDumper/ExecutableFormats/Elf.cs-358-            }
+Il2CppDumper/ExecutableFormats/Elf.cs-359-        }
+Il2CppDumper/ExecutableFormats/Elf.cs-360-
+Il2CppDumper/ExecutableFormats/Elf.cs-361-        public override SectionHelper GetSectionHelper(int methodCount, int typeDefinitionsCount, int imageCount)
+Il2CppDumper/ExecutableFormats/Elf.cs-362-        {
+Il2CppDumper/ExecutableFormats/Elf.cs-363-            var dataList = new List<Elf32_Phdr>();
+Il2CppDumper/ExecutableFormats/Elf.cs-364-            var execList = new List<Elf32_Phdr>();
+Il2CppDumper/ExecutableFormats/Elf.cs-365-            foreach (var phdr in programSegment)
+Il2CppDumper/ExecutableFormats/Elf.cs-366-            {
+Il2CppDumper/ExecutableFormats/Elf.cs-367-                if (phdr.p_memsz != 0ul)
+Il2CppDumper/ExecutableFormats/Elf.cs-368-                {
+Il2CppDumper/ExecutableFormats/Elf.cs-369-                    switch (phdr.p_flags)
+Il2CppDumper/ExecutableFormats/Elf.cs-370-                    {
+Il2CppDumper/ExecutableFormats/Elf.cs-371-                        case 1u: //PF_X
+Il2CppDumper/ExecutableFormats/Elf.cs-372-                        case 3u:
+Il2CppDumper/ExecutableFormats/Elf.cs-373-                        case 5u:
+Il2CppDumper/ExecutableFormats/Elf.cs-374-                        case 7u:
+Il2CppDumper/ExecutableFormats/Elf.cs-375-                            execList.Add(phdr);
+Il2CppDumper/ExecutableFormats/Elf.cs-376-                            break;
 --
-Il2CppDumper/ExecutableFormats/NSO.cs:219:        public override bool Search()
-Il2CppDumper/ExecutableFormats/NSO.cs-220-        {
-Il2CppDumper/ExecutableFormats/NSO.cs-221-            return false;
-Il2CppDumper/ExecutableFormats/NSO.cs-222-        }
-Il2CppDumper/ExecutableFormats/NSO.cs-223-
-Il2CppDumper/ExecutableFormats/NSO.cs:224:        public override bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount)
-Il2CppDumper/ExecutableFormats/NSO.cs-225-        {
-Il2CppDumper/ExecutableFormats/NSO.cs-226-            var sectionHelper = GetSectionHelper(methodCount, typeDefinitionsCount, imageCount);
-Il2CppDumper/ExecutableFormats/NSO.cs-227-            var codeRegistration = sectionHelper.FindCodeRegistration();
-Il2CppDumper/ExecutableFormats/NSO.cs-228-            var metadataRegistration = sectionHelper.FindMetadataRegistration();
+Il2CppDumper/ExecutableFormats/NSO.cs:227:            var codeRegistration = sectionHelper.FindCodeRegistration();
+Il2CppDumper/ExecutableFormats/NSO.cs:228:            var metadataRegistration = sectionHelper.FindMetadataRegistration();
 Il2CppDumper/ExecutableFormats/NSO.cs-229-            return AutoPlusInit(codeRegistration, metadataRegistration);
 Il2CppDumper/ExecutableFormats/NSO.cs-230-        }
 Il2CppDumper/ExecutableFormats/NSO.cs-231-
-Il2CppDumper/ExecutableFormats/NSO.cs:232:        public override bool SymbolSearch()
+Il2CppDumper/ExecutableFormats/NSO.cs-232-        public override bool SymbolSearch()
 Il2CppDumper/ExecutableFormats/NSO.cs-233-        {
 Il2CppDumper/ExecutableFormats/NSO.cs-234-            return false;
 Il2CppDumper/ExecutableFormats/NSO.cs-235-        }
@@ -1033,187 +796,265 @@ Il2CppDumper/ExecutableFormats/NSO.cs-334-        public override bool CheckDump
 Il2CppDumper/ExecutableFormats/NSO.cs-335-    }
 Il2CppDumper/ExecutableFormats/NSO.cs-336-}
 --
-Il2CppDumper/Il2Cpp/Il2Cpp.cs:37:        public abstract bool Search();
-Il2CppDumper/Il2Cpp/Il2Cpp.cs:38:        public abstract bool PlusSearch(int methodCount, int typeDefinitionsCount, int imageCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs:39:        public abstract bool SymbolSearch();
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-40-        public abstract SectionHelper GetSectionHelper(int methodCount, int typeDefinitionsCount, int imageCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-41-        public abstract bool CheckDump();
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-42-
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-43-        protected Il2Cpp(Stream stream) : base(stream) { }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-44-
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-45-        public void SetProperties(double version, long metadataUsagesCount)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-46-        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-47-            Version = version;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-48-            this.metadataUsagesCount = metadataUsagesCount;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-49-        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-50-
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-51-        protected bool AutoPlusInit(ulong codeRegistration, ulong metadataRegistration)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-52-        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-53-            if (codeRegistration != 0)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-54-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-55-                var limit = this is WebAssemblyMemory ? 0x35000u : 0x50000u; //TODO
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-56-                if (Version >= 24.2)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-57-                {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-58-                    pCodeRegistration = MapVATR<Il2CppCodeRegistration>(codeRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-59-                    if (Version == 31)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-60-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-61-                        if (pCodeRegistration.genericMethodPointersCount > limit)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-62-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-63-                            codeRegistration -= PointerSize * 2;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-64-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-65-                        else
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-66-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-67-                            Version = 29;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-68-                            Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-69-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-70-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-71-                    if (Version == 29)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-72-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-73-                        if (pCodeRegistration.genericMethodPointersCount > limit)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-74-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-75-                            Version = 29.1;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-76-                            codeRegistration -= PointerSize * 2;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-77-                            Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-78-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-79-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-80-                    if (Version == 27)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-81-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-82-                        if (pCodeRegistration.reversePInvokeWrapperCount > limit)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-83-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-84-                            Version = 27.1;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-85-                            codeRegistration -= PointerSize;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-86-                            Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-87-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-88-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-89-                    if (Version == 24.4)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-90-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-91-                        codeRegistration -= PointerSize * 2;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-92-                        if (pCodeRegistration.reversePInvokeWrapperCount > limit)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-93-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-94-                            Version = 24.5;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-95-                            codeRegistration -= PointerSize;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-96-                            Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-97-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-98-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-99-                    if (Version == 24.2)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-100-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-101-                        if (pCodeRegistration.interopDataCount == 0) //TODO
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-102-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-103-                            Version = 24.3;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-104-                            codeRegistration -= PointerSize * 2;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-105-                            Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-106-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-107-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-108-                }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-109-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-110-            Console.WriteLine("CodeRegistration : {0:x}", codeRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-111-            Console.WriteLine("MetadataRegistration : {0:x}", metadataRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-112-            if (codeRegistration != 0 && metadataRegistration != 0)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-113-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-114-                Init(codeRegistration, metadataRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-115-                return true;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-116-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-117-            return false;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-118-        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-119-
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-120-        public virtual void Init(ulong codeRegistration, ulong metadataRegistration)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-121-        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-122-            pCodeRegistration = MapVATR<Il2CppCodeRegistration>(codeRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-123-            var limit = this is WebAssemblyMemory ? 0x35000u : 0x50000u; //TODO
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-124-            if (Version == 27 && pCodeRegistration.invokerPointersCount > limit)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-125-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-126-                Version = 27.1;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-127-                Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-128-                pCodeRegistration = MapVATR<Il2CppCodeRegistration>(codeRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-129-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-130-            if (Version == 27.1)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-131-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-132-                var pCodeGenModules = MapVATR<ulong>(pCodeRegistration.codeGenModules, pCodeRegistration.codeGenModulesCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-133-                foreach (var pCodeGenModule in pCodeGenModules)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-134-                {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-135-                    var codeGenModule = MapVATR<Il2CppCodeGenModule>(pCodeGenModule);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-136-                    if (codeGenModule.rgctxsCount > 0)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-137-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-138-                        var rgctxs = MapVATR<Il2CppRGCTXDefinition>(codeGenModule.rgctxs, codeGenModule.rgctxsCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-139-                        if (rgctxs.All(x => x.data.rgctxDataDummy > limit))
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-140-                        {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-141-                            Version = 27.2;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-142-                            Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-143-                        }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-144-                        break;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-145-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-146-                }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-147-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-148-            if (Version == 24.4 && pCodeRegistration.invokerPointersCount > limit)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-149-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-150-                Version = 24.5;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-151-                Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-152-                pCodeRegistration = MapVATR<Il2CppCodeRegistration>(codeRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-153-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-154-            if (Version == 24.2 && pCodeRegistration.codeGenModules == 0) //TODO
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-155-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-156-                Version = 24.3;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-157-                Console.WriteLine($"Change il2cpp version to: {Version}");
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-158-                pCodeRegistration = MapVATR<Il2CppCodeRegistration>(codeRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-159-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-160-            pMetadataRegistration = MapVATR<Il2CppMetadataRegistration>(metadataRegistration);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-161-            genericMethodPointers = MapVATR<ulong>(pCodeRegistration.genericMethodPointers, pCodeRegistration.genericMethodPointersCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-162-            invokerPointers = MapVATR<ulong>(pCodeRegistration.invokerPointers, pCodeRegistration.invokerPointersCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-163-            if (Version < 27)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-164-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-165-                customAttributeGenerators = MapVATR<ulong>(pCodeRegistration.customAttributeGenerators, pCodeRegistration.customAttributeCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-166-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-167-            if (Version > 16 && Version < 27)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-168-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-169-                metadataUsages = MapVATR<ulong>(pMetadataRegistration.metadataUsages, metadataUsagesCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-170-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-171-            if (Version >= 22)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-172-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-173-                if (pCodeRegistration.reversePInvokeWrapperCount != 0)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-174-                    reversePInvokeWrappers = MapVATR<ulong>(pCodeRegistration.reversePInvokeWrappers, pCodeRegistration.reversePInvokeWrapperCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-175-                if (pCodeRegistration.unresolvedVirtualCallCount != 0)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-176-                    unresolvedVirtualCallPointers = MapVATR<ulong>(pCodeRegistration.unresolvedVirtualCallPointers, pCodeRegistration.unresolvedVirtualCallCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-177-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-178-            genericInstPointers = MapVATR<ulong>(pMetadataRegistration.genericInsts, pMetadataRegistration.genericInstsCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-179-            genericInsts = Array.ConvertAll(genericInstPointers, MapVATR<Il2CppGenericInst>);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-180-            fieldOffsetsArePointers = Version > 21;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-181-            if (Version == 21)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-182-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-183-                var fieldTest = MapVATR<uint>(pMetadataRegistration.fieldOffsets, 6);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-184-                fieldOffsetsArePointers = fieldTest[0] == 0 && fieldTest[1] == 0 && fieldTest[2] == 0 && fieldTest[3] == 0 && fieldTest[4] == 0 && fieldTest[5] > 0;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-185-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-186-            if (fieldOffsetsArePointers)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-187-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-188-                fieldOffsets = MapVATR<ulong>(pMetadataRegistration.fieldOffsets, pMetadataRegistration.fieldOffsetsCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-189-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-190-            else
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-191-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-192-                fieldOffsets = Array.ConvertAll(MapVATR<uint>(pMetadataRegistration.fieldOffsets, pMetadataRegistration.fieldOffsetsCount), x => (ulong)x);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-193-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-194-            var pTypes = MapVATR<ulong>(pMetadataRegistration.types, pMetadataRegistration.typesCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-195-            types = new Il2CppType[pMetadataRegistration.typesCount];
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-196-            for (var i = 0; i < pMetadataRegistration.typesCount; ++i)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-197-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-198-                types[i] = MapVATR<Il2CppType>(pTypes[i]);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-199-                types[i].Init(Version);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-200-                typeDic.Add(pTypes[i], types[i]);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-201-            }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-202-            if (Version >= 24.2)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-203-            {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-204-                var pCodeGenModules = MapVATR<ulong>(pCodeRegistration.codeGenModules, pCodeRegistration.codeGenModulesCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-205-                codeGenModules = new Dictionary<string, Il2CppCodeGenModule>(pCodeGenModules.Length, StringComparer.Ordinal);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-206-                codeGenModuleMethodPointers = new Dictionary<string, ulong[]>(pCodeGenModules.Length, StringComparer.Ordinal);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-207-                rgctxsDictionary = new Dictionary<string, Dictionary<uint, Il2CppRGCTXDefinition[]>>(pCodeGenModules.Length, StringComparer.Ordinal);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-208-                foreach (var pCodeGenModule in pCodeGenModules)
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-209-                {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-210-                    var codeGenModule = MapVATR<Il2CppCodeGenModule>(pCodeGenModule);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-211-                    var moduleName = ReadStringToNull(MapVATR(codeGenModule.moduleName));
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-212-                    codeGenModules.Add(moduleName, codeGenModule);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-213-                    ulong[] methodPointers;
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-214-                    try
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-215-                    {
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-216-                        methodPointers = MapVATR<ulong>(codeGenModule.methodPointers, codeGenModule.methodPointerCount);
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-217-                    }
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-218-                    catch
-Il2CppDumper/Il2Cpp/Il2Cpp.cs-219-                    {
+Il2CppDumper/Utils/SectionHelper.cs:167:        public ulong FindCodeRegistration()
+Il2CppDumper/Utils/SectionHelper.cs-168-        {
+Il2CppDumper/Utils/SectionHelper.cs-169-            if (il2Cpp.Version >= 24.2)
+Il2CppDumper/Utils/SectionHelper.cs-170-            {
+Il2CppDumper/Utils/SectionHelper.cs-171-                ulong codeRegistration;
+Il2CppDumper/Utils/SectionHelper.cs-172-                if (il2Cpp is ElfBase)
+Il2CppDumper/Utils/SectionHelper.cs-173-                {
+Il2CppDumper/Utils/SectionHelper.cs:174:                    codeRegistration = FindCodeRegistrationExec();
+Il2CppDumper/Utils/SectionHelper.cs-175-                    if (codeRegistration == 0)
+Il2CppDumper/Utils/SectionHelper.cs-176-                    {
+Il2CppDumper/Utils/SectionHelper.cs:177:                        codeRegistration = FindCodeRegistrationData();
+Il2CppDumper/Utils/SectionHelper.cs-178-                    }
+Il2CppDumper/Utils/SectionHelper.cs-179-                    else
+Il2CppDumper/Utils/SectionHelper.cs-180-                    {
+Il2CppDumper/Utils/SectionHelper.cs-181-                        pointerInExec = true;
+Il2CppDumper/Utils/SectionHelper.cs-182-                    }
+Il2CppDumper/Utils/SectionHelper.cs-183-                }
+Il2CppDumper/Utils/SectionHelper.cs-184-                else
+Il2CppDumper/Utils/SectionHelper.cs-185-                {
+Il2CppDumper/Utils/SectionHelper.cs:186:                    codeRegistration = FindCodeRegistrationData();
+Il2CppDumper/Utils/SectionHelper.cs-187-                    if (codeRegistration == 0)
+Il2CppDumper/Utils/SectionHelper.cs-188-                    {
+Il2CppDumper/Utils/SectionHelper.cs:189:                        codeRegistration = FindCodeRegistrationExec();
+Il2CppDumper/Utils/SectionHelper.cs-190-                        pointerInExec = true;
+Il2CppDumper/Utils/SectionHelper.cs-191-                    }
+Il2CppDumper/Utils/SectionHelper.cs-192-                }
+Il2CppDumper/Utils/SectionHelper.cs-193-                return codeRegistration;
+Il2CppDumper/Utils/SectionHelper.cs-194-            }
+Il2CppDumper/Utils/SectionHelper.cs:195:            return FindCodeRegistrationOld();
+Il2CppDumper/Utils/SectionHelper.cs-196-        }
+Il2CppDumper/Utils/SectionHelper.cs-197-
+Il2CppDumper/Utils/SectionHelper.cs:198:        public ulong FindMetadataRegistration()
+Il2CppDumper/Utils/SectionHelper.cs-199-        {
+Il2CppDumper/Utils/SectionHelper.cs-200-            if (il2Cpp.Version < 19)
+Il2CppDumper/Utils/SectionHelper.cs-201-            {
+Il2CppDumper/Utils/SectionHelper.cs-202-                return 0;
+Il2CppDumper/Utils/SectionHelper.cs-203-            }
+Il2CppDumper/Utils/SectionHelper.cs-204-            if (il2Cpp.Version >= 27)
+Il2CppDumper/Utils/SectionHelper.cs-205-            {
+Il2CppDumper/Utils/SectionHelper.cs:206:                return FindMetadataRegistrationV21();
+Il2CppDumper/Utils/SectionHelper.cs-207-            }
+Il2CppDumper/Utils/SectionHelper.cs:208:            return FindMetadataRegistrationOld();
+Il2CppDumper/Utils/SectionHelper.cs-209-        }
+Il2CppDumper/Utils/SectionHelper.cs-210-
+Il2CppDumper/Utils/SectionHelper.cs:211:        private ulong FindCodeRegistrationOld()
+Il2CppDumper/Utils/SectionHelper.cs-212-        {
+Il2CppDumper/Utils/SectionHelper.cs-213-            foreach (var section in data)
+Il2CppDumper/Utils/SectionHelper.cs-214-            {
+Il2CppDumper/Utils/SectionHelper.cs-215-                il2Cpp.Position = section.offset;
+Il2CppDumper/Utils/SectionHelper.cs-216-                while (il2Cpp.Position < section.offsetEnd)
+Il2CppDumper/Utils/SectionHelper.cs-217-                {
+Il2CppDumper/Utils/SectionHelper.cs-218-                    var addr = il2Cpp.Position;
+Il2CppDumper/Utils/SectionHelper.cs-219-                    if (il2Cpp.ReadIntPtr() == methodCount)
+Il2CppDumper/Utils/SectionHelper.cs-220-                    {
+Il2CppDumper/Utils/SectionHelper.cs-221-                        try
+Il2CppDumper/Utils/SectionHelper.cs-222-                        {
+Il2CppDumper/Utils/SectionHelper.cs-223-                            var pointer = il2Cpp.MapVATR(il2Cpp.ReadUIntPtr());
+Il2CppDumper/Utils/SectionHelper.cs-224-                            if (CheckPointerRangeDataRa(pointer))
+Il2CppDumper/Utils/SectionHelper.cs-225-                            {
+Il2CppDumper/Utils/SectionHelper.cs-226-                                var pointers = il2Cpp.ReadClassArray<ulong>(pointer, methodCount);
+Il2CppDumper/Utils/SectionHelper.cs-227-                                if (CheckPointerRangeExecVa(pointers))
+Il2CppDumper/Utils/SectionHelper.cs-228-                                {
+Il2CppDumper/Utils/SectionHelper.cs-229-                                    return addr - section.offset + section.address;
+Il2CppDumper/Utils/SectionHelper.cs-230-                                }
+Il2CppDumper/Utils/SectionHelper.cs-231-                            }
+Il2CppDumper/Utils/SectionHelper.cs-232-                        }
+Il2CppDumper/Utils/SectionHelper.cs-233-                        catch
+Il2CppDumper/Utils/SectionHelper.cs-234-                        {
+Il2CppDumper/Utils/SectionHelper.cs-235-                            // ignored
+Il2CppDumper/Utils/SectionHelper.cs-236-                        }
+Il2CppDumper/Utils/SectionHelper.cs-237-                    }
+Il2CppDumper/Utils/SectionHelper.cs-238-                    il2Cpp.Position = addr + il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-239-                }
+Il2CppDumper/Utils/SectionHelper.cs-240-            }
+Il2CppDumper/Utils/SectionHelper.cs-241-
+Il2CppDumper/Utils/SectionHelper.cs-242-            return 0ul;
+Il2CppDumper/Utils/SectionHelper.cs-243-        }
+Il2CppDumper/Utils/SectionHelper.cs-244-
+Il2CppDumper/Utils/SectionHelper.cs:245:        private ulong FindMetadataRegistrationOld()
+Il2CppDumper/Utils/SectionHelper.cs-246-        {
+Il2CppDumper/Utils/SectionHelper.cs-247-            foreach (var section in data)
+Il2CppDumper/Utils/SectionHelper.cs-248-            {
+Il2CppDumper/Utils/SectionHelper.cs-249-                il2Cpp.Position = section.offset;
+Il2CppDumper/Utils/SectionHelper.cs-250-                var end = Math.Min(section.offsetEnd, il2Cpp.Length) - il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-251-                while (il2Cpp.Position < end)
+Il2CppDumper/Utils/SectionHelper.cs-252-                {
+Il2CppDumper/Utils/SectionHelper.cs-253-                    var addr = il2Cpp.Position;
+Il2CppDumper/Utils/SectionHelper.cs-254-                    if (il2Cpp.ReadIntPtr() == typeDefinitionsCount)
+Il2CppDumper/Utils/SectionHelper.cs-255-                    {
+Il2CppDumper/Utils/SectionHelper.cs-256-                        try
+Il2CppDumper/Utils/SectionHelper.cs-257-                        {
+Il2CppDumper/Utils/SectionHelper.cs-258-                            il2Cpp.Position += il2Cpp.PointerSize * 2;
+Il2CppDumper/Utils/SectionHelper.cs-259-                            var pointer = il2Cpp.MapVATR(il2Cpp.ReadUIntPtr());
+Il2CppDumper/Utils/SectionHelper.cs-260-                            if (CheckPointerRangeDataRa(pointer))
+Il2CppDumper/Utils/SectionHelper.cs-261-                            {
+Il2CppDumper/Utils/SectionHelper.cs-262-                                var pointers = il2Cpp.ReadClassArray<ulong>(pointer, metadataUsagesCount);
+Il2CppDumper/Utils/SectionHelper.cs-263-                                if (CheckPointerRangeBssVa(pointers))
+Il2CppDumper/Utils/SectionHelper.cs-264-                                {
+Il2CppDumper/Utils/SectionHelper.cs-265-                                    return addr - il2Cpp.PointerSize * 12 - section.offset + section.address;
+Il2CppDumper/Utils/SectionHelper.cs-266-                                }
+Il2CppDumper/Utils/SectionHelper.cs-267-                            }
+Il2CppDumper/Utils/SectionHelper.cs-268-                        }
+Il2CppDumper/Utils/SectionHelper.cs-269-                        catch
+Il2CppDumper/Utils/SectionHelper.cs-270-                        {
+Il2CppDumper/Utils/SectionHelper.cs-271-                            // ignored
+Il2CppDumper/Utils/SectionHelper.cs-272-                        }
+Il2CppDumper/Utils/SectionHelper.cs-273-                    }
+Il2CppDumper/Utils/SectionHelper.cs-274-                    il2Cpp.Position = addr + il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-275-                }
+Il2CppDumper/Utils/SectionHelper.cs-276-            }
+Il2CppDumper/Utils/SectionHelper.cs-277-
+Il2CppDumper/Utils/SectionHelper.cs-278-            return 0ul;
+Il2CppDumper/Utils/SectionHelper.cs-279-        }
+Il2CppDumper/Utils/SectionHelper.cs-280-
+Il2CppDumper/Utils/SectionHelper.cs:281:        private ulong FindMetadataRegistrationV21()
+Il2CppDumper/Utils/SectionHelper.cs-282-        {
+Il2CppDumper/Utils/SectionHelper.cs-283-            foreach (var section in data)
+Il2CppDumper/Utils/SectionHelper.cs-284-            {
+Il2CppDumper/Utils/SectionHelper.cs-285-                il2Cpp.Position = section.offset;
+Il2CppDumper/Utils/SectionHelper.cs-286-                var end = Math.Min(section.offsetEnd, il2Cpp.Length) - il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-287-                while (il2Cpp.Position < end)
+Il2CppDumper/Utils/SectionHelper.cs-288-                {
+Il2CppDumper/Utils/SectionHelper.cs-289-                    var addr = il2Cpp.Position;
+Il2CppDumper/Utils/SectionHelper.cs-290-                    if (il2Cpp.ReadIntPtr() == typeDefinitionsCount)
+Il2CppDumper/Utils/SectionHelper.cs-291-                    {
+Il2CppDumper/Utils/SectionHelper.cs-292-                        il2Cpp.Position += il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-293-                        if (il2Cpp.ReadIntPtr() == typeDefinitionsCount)
+Il2CppDumper/Utils/SectionHelper.cs-294-                        {
+Il2CppDumper/Utils/SectionHelper.cs-295-                            try
+Il2CppDumper/Utils/SectionHelper.cs-296-                            {
+Il2CppDumper/Utils/SectionHelper.cs-297-                                var pointer = il2Cpp.MapVATR(il2Cpp.ReadUIntPtr());
+Il2CppDumper/Utils/SectionHelper.cs-298-                                if (CheckPointerRangeDataRa(pointer))
+Il2CppDumper/Utils/SectionHelper.cs-299-                                {
+Il2CppDumper/Utils/SectionHelper.cs-300-                                    var pointers = il2Cpp.ReadClassArray<ulong>(pointer, typeDefinitionsCount);
+Il2CppDumper/Utils/SectionHelper.cs-301-                                    bool flag;
+Il2CppDumper/Utils/SectionHelper.cs-302-                                    if (pointerInExec)
+Il2CppDumper/Utils/SectionHelper.cs-303-                                    {
+Il2CppDumper/Utils/SectionHelper.cs-304-                                        flag = CheckPointerRangeExecVa(pointers);
+Il2CppDumper/Utils/SectionHelper.cs-305-                                    }
+Il2CppDumper/Utils/SectionHelper.cs-306-                                    else
+Il2CppDumper/Utils/SectionHelper.cs-307-                                    {
+Il2CppDumper/Utils/SectionHelper.cs-308-                                        flag = CheckPointerRangeDataVa(pointers);
+Il2CppDumper/Utils/SectionHelper.cs-309-                                    }
+Il2CppDumper/Utils/SectionHelper.cs-310-                                    if (flag)
+Il2CppDumper/Utils/SectionHelper.cs-311-                                    {
+Il2CppDumper/Utils/SectionHelper.cs-312-                                        return addr - il2Cpp.PointerSize * 10 - section.offset + section.address;
+Il2CppDumper/Utils/SectionHelper.cs-313-                                    }
+Il2CppDumper/Utils/SectionHelper.cs-314-                                }
+Il2CppDumper/Utils/SectionHelper.cs-315-                            }
+Il2CppDumper/Utils/SectionHelper.cs-316-                            catch
+Il2CppDumper/Utils/SectionHelper.cs-317-                            {
+Il2CppDumper/Utils/SectionHelper.cs-318-                                // ignored
+Il2CppDumper/Utils/SectionHelper.cs-319-                            }
+Il2CppDumper/Utils/SectionHelper.cs-320-                        }
+Il2CppDumper/Utils/SectionHelper.cs-321-                    }
+Il2CppDumper/Utils/SectionHelper.cs-322-                    il2Cpp.Position = addr + il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-323-                }
+Il2CppDumper/Utils/SectionHelper.cs-324-            }
+Il2CppDumper/Utils/SectionHelper.cs-325-
+Il2CppDumper/Utils/SectionHelper.cs-326-            return 0ul;
+Il2CppDumper/Utils/SectionHelper.cs-327-        }
+Il2CppDumper/Utils/SectionHelper.cs-328-
+Il2CppDumper/Utils/SectionHelper.cs-329-        private bool CheckPointerRangeDataRa(ulong pointer)
+Il2CppDumper/Utils/SectionHelper.cs-330-        {
+Il2CppDumper/Utils/SectionHelper.cs-331-            return data.Any(x => pointer >= x.offset && pointer <= x.offsetEnd);
+Il2CppDumper/Utils/SectionHelper.cs-332-        }
+Il2CppDumper/Utils/SectionHelper.cs-333-
+Il2CppDumper/Utils/SectionHelper.cs-334-        private bool CheckPointerRangeExecVa(ulong[] pointers)
+Il2CppDumper/Utils/SectionHelper.cs-335-        {
+Il2CppDumper/Utils/SectionHelper.cs-336-            return pointers.All(x => exec.Any(y => x >= y.address && x <= y.addressEnd));
+Il2CppDumper/Utils/SectionHelper.cs-337-        }
+Il2CppDumper/Utils/SectionHelper.cs-338-
+Il2CppDumper/Utils/SectionHelper.cs-339-        private bool CheckPointerRangeDataVa(ulong[] pointers)
+Il2CppDumper/Utils/SectionHelper.cs-340-        {
+Il2CppDumper/Utils/SectionHelper.cs-341-            return pointers.All(x => data.Any(y => x >= y.address && x <= y.addressEnd));
+Il2CppDumper/Utils/SectionHelper.cs-342-        }
+Il2CppDumper/Utils/SectionHelper.cs-343-
+Il2CppDumper/Utils/SectionHelper.cs-344-        private bool CheckPointerRangeBssVa(ulong[] pointers)
+Il2CppDumper/Utils/SectionHelper.cs-345-        {
+Il2CppDumper/Utils/SectionHelper.cs-346-            return pointers.All(x => bss.Any(y => x >= y.address && x <= y.addressEnd));
+Il2CppDumper/Utils/SectionHelper.cs-347-        }
+Il2CppDumper/Utils/SectionHelper.cs-348-
+Il2CppDumper/Utils/SectionHelper.cs-349-        private static readonly byte[] featureBytes = { 0x6D, 0x73, 0x63, 0x6F, 0x72, 0x6C, 0x69, 0x62, 0x2E, 0x64, 0x6C, 0x6C, 0x00 }; //mscorlib.dll
+Il2CppDumper/Utils/SectionHelper.cs-350-
+Il2CppDumper/Utils/SectionHelper.cs:351:        private ulong FindCodeRegistrationData()
+Il2CppDumper/Utils/SectionHelper.cs-352-        {
+Il2CppDumper/Utils/SectionHelper.cs:353:            return FindCodeRegistration2019(data);
+Il2CppDumper/Utils/SectionHelper.cs-354-        }
+Il2CppDumper/Utils/SectionHelper.cs-355-
+Il2CppDumper/Utils/SectionHelper.cs:356:        private ulong FindCodeRegistrationExec()
+Il2CppDumper/Utils/SectionHelper.cs-357-        {
+Il2CppDumper/Utils/SectionHelper.cs:358:            return FindCodeRegistration2019(exec);
+Il2CppDumper/Utils/SectionHelper.cs-359-        }
+Il2CppDumper/Utils/SectionHelper.cs-360-
+Il2CppDumper/Utils/SectionHelper.cs:361:        private ulong FindCodeRegistration2019(List<SearchSection> secs)
+Il2CppDumper/Utils/SectionHelper.cs-362-        {
+Il2CppDumper/Utils/SectionHelper.cs-363-            foreach (var sec in secs)
+Il2CppDumper/Utils/SectionHelper.cs-364-            {
+Il2CppDumper/Utils/SectionHelper.cs-365-                il2Cpp.Position = sec.offset;
+Il2CppDumper/Utils/SectionHelper.cs-366-                var buff = il2Cpp.ReadBytes((int)(sec.offsetEnd - sec.offset));
+Il2CppDumper/Utils/SectionHelper.cs-367-                foreach (var index in buff.Search(featureBytes))
+Il2CppDumper/Utils/SectionHelper.cs-368-                {
+Il2CppDumper/Utils/SectionHelper.cs-369-                    var dllva = (ulong)index + sec.address;
+Il2CppDumper/Utils/SectionHelper.cs-370-                    foreach (var refva in FindReference(dllva))
+Il2CppDumper/Utils/SectionHelper.cs-371-                    {
+Il2CppDumper/Utils/SectionHelper.cs-372-                        foreach (var refva2 in FindReference(refva))
+Il2CppDumper/Utils/SectionHelper.cs-373-                        {
+Il2CppDumper/Utils/SectionHelper.cs-374-                            if (il2Cpp.Version >= 27)
+Il2CppDumper/Utils/SectionHelper.cs-375-                            {
+Il2CppDumper/Utils/SectionHelper.cs-376-                                for (int i = imageCount - 1; i >= 0; i--)
+Il2CppDumper/Utils/SectionHelper.cs-377-                                {
+Il2CppDumper/Utils/SectionHelper.cs-378-                                    foreach (var refva3 in FindReference(refva2 - (ulong)i * il2Cpp.PointerSize))
+Il2CppDumper/Utils/SectionHelper.cs-379-                                    {
+Il2CppDumper/Utils/SectionHelper.cs-380-                                        il2Cpp.Position = il2Cpp.MapVATR(refva3 - il2Cpp.PointerSize);
+Il2CppDumper/Utils/SectionHelper.cs-381-                                        if (il2Cpp.ReadIntPtr() == imageCount)
+Il2CppDumper/Utils/SectionHelper.cs-382-                                        {
+Il2CppDumper/Utils/SectionHelper.cs-383-                                            if (il2Cpp.Version >= 29)
+Il2CppDumper/Utils/SectionHelper.cs-384-                                            {
+Il2CppDumper/Utils/SectionHelper.cs-385-                                                return refva3 - il2Cpp.PointerSize * 14;
+Il2CppDumper/Utils/SectionHelper.cs-386-                                            }
+Il2CppDumper/Utils/SectionHelper.cs-387-                                            return refva3 - il2Cpp.PointerSize * 13;
+Il2CppDumper/Utils/SectionHelper.cs-388-                                        }
+Il2CppDumper/Utils/SectionHelper.cs-389-                                    }
+Il2CppDumper/Utils/SectionHelper.cs-390-                                }
+Il2CppDumper/Utils/SectionHelper.cs-391-                            }
+Il2CppDumper/Utils/SectionHelper.cs-392-                            else
+Il2CppDumper/Utils/SectionHelper.cs-393-                            {
+Il2CppDumper/Utils/SectionHelper.cs-394-                                for (int i = 0; i < imageCount; i++)
+Il2CppDumper/Utils/SectionHelper.cs-395-                                {
+Il2CppDumper/Utils/SectionHelper.cs-396-                                    foreach (var refva3 in FindReference(refva2 - (ulong)i * il2Cpp.PointerSize))
+Il2CppDumper/Utils/SectionHelper.cs-397-                                    {
+Il2CppDumper/Utils/SectionHelper.cs-398-                                        return refva3 - il2Cpp.PointerSize * 13;
+Il2CppDumper/Utils/SectionHelper.cs-399-                                    }
+Il2CppDumper/Utils/SectionHelper.cs-400-                                }
+Il2CppDumper/Utils/SectionHelper.cs-401-                            }
+Il2CppDumper/Utils/SectionHelper.cs-402-                        }
+Il2CppDumper/Utils/SectionHelper.cs-403-                    }
+Il2CppDumper/Utils/SectionHelper.cs-404-                }
+Il2CppDumper/Utils/SectionHelper.cs-405-            }
+Il2CppDumper/Utils/SectionHelper.cs-406-            return 0ul;
+Il2CppDumper/Utils/SectionHelper.cs-407-        }
+Il2CppDumper/Utils/SectionHelper.cs-408-
+Il2CppDumper/Utils/SectionHelper.cs-409-        private IEnumerable<ulong> FindReference(ulong addr)
+Il2CppDumper/Utils/SectionHelper.cs-410-        {
+Il2CppDumper/Utils/SectionHelper.cs-411-            foreach (var dataSec in data)
+Il2CppDumper/Utils/SectionHelper.cs-412-            {
+Il2CppDumper/Utils/SectionHelper.cs-413-                var position = dataSec.offset;
+Il2CppDumper/Utils/SectionHelper.cs-414-                var end = Math.Min(dataSec.offsetEnd, il2Cpp.Length) - il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-415-                while (position < end)
+Il2CppDumper/Utils/SectionHelper.cs-416-                {
+Il2CppDumper/Utils/SectionHelper.cs-417-                    il2Cpp.Position = position;
+Il2CppDumper/Utils/SectionHelper.cs-418-                    if (il2Cpp.ReadUIntPtr() == addr)
+Il2CppDumper/Utils/SectionHelper.cs-419-                    {
+Il2CppDumper/Utils/SectionHelper.cs-420-                        yield return position - dataSec.offset + dataSec.address;
+Il2CppDumper/Utils/SectionHelper.cs-421-                    }
+Il2CppDumper/Utils/SectionHelper.cs-422-                    position += il2Cpp.PointerSize;
+Il2CppDumper/Utils/SectionHelper.cs-423-                }
+Il2CppDumper/Utils/SectionHelper.cs-424-            }
+Il2CppDumper/Utils/SectionHelper.cs-425-        }
+Il2CppDumper/Utils/SectionHelper.cs-426-    }
+Il2CppDumper/Utils/SectionHelper.cs-427-}
 loksum619@SamMac-mini Il2CppDumper_Perfare % 
