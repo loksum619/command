@@ -1,7 +1,7 @@
-Last login: Wed Nov 18 16:28:06 on ttys000
+Last login: Wed Nov 18 16:49:04 on ttys000
 loksum619@SamMac-mini ~ % BOOT="$HOME/Desktop/Ghost2_Recovery/APK_Extracted/lib/arm64-v8a/libbootstrap.so"
 
-llvm-objdump --start-address=0x75450 --stop-address=0x75490 --full-contents "$BOOT"
+llvm-objdump --full-contents --start-address=0xaa5b8 --stop-address=0xaa660 "$BOOT"
 
 /Users/loksum619/Desktop/Ghost2_Recovery/APK_Extracted/lib/arm64-v8a/libbootstrap.so:	file format elf64-littleaarch64
 Contents of section .note.gnu.build-id:
